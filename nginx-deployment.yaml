@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2 # Number of desired replicas (pods)
+  selector:
+    matchLabels:
+      app: nginx # Label to select pods for this deployment
+  template:
+    metadata:
+      labels:
+        app: nginx # Label for pods created by this deployment
+    spec:
+      containers:
+      - name: nginx-zon-coffee
+        image: jatayu99/zon-coffee:latest # Nginx container image
+        ports:
+        - containerPort: 80
